@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+cd "${SCRIPT_DIR}/../" || exit
+
+metcalf
+
+rm -rf 'tmp/' 'publish/files/'
+mkdir -p 'tmp/Store Hero Sources' 'publish/files/'
+cp -r scad/* 'tmp/Store Hero Sources'
+cd tmp || exit
+zip -r '../publish/files/Store Hero Sources.zip' 'Store Hero Sources'
+cd .. || exit
+
+cp stl/*.stl 'publish/files/'
+
+cd ../../
+rm -rf 'tmp/'

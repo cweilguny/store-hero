@@ -1,0 +1,6 @@
+.idea/
+
+*.3mf
+*.gcode
+stl/
+tmp/
