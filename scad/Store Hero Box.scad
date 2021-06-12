@@ -5,10 +5,10 @@
 LENGTH_UNITS = 1;
 // Width factor: The width will be 49 x WIDTH_UNITS
 WIDTH_UNITS = 1;
-// Height S/M/L
-HEIGHT = "M"; // [S, M, L]
-// Override HEIGHT and give a custom numeric value; if left blank HEIGHT is used
-HEIGHT_OVERRIDE = "";
+// Height factor: The height will be 33.75 * HEIGHT_UNITS + 3.5
+HEIGHT_UNITS = 2;
+// Override HEIGHT_UNITS and give a custom numeric value for the total height; if left blank HEIGHT_UNITS is used
+HEIGHT_TOTAL_OVERRIDE = "";
 
 module __Customizer_Limit__() {}
 
@@ -29,6 +29,7 @@ include <includes/Store Hero Variables.scad>
 // ### UTILITY MODULES
 ////////////////////////////////////////////////////////////////////////////////
 include <includes/Store Hero Utilities.scad>
+include <includes/Store Hero Raw Box.scad>
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -47,10 +48,19 @@ main();
 // ### MODULES
 ////////////////////////////////////////////////////////////////////////////////
 module main() {
-    foot();
+    union() {
+        raw_box();
+        display();
+    }
 }
 
-module foot() {
-    linear_extrude(FOOT_HEIGHT)
-        rounded_square([length(), width()], ROUNDING_RADIUS_FOOT, true);
+module display() {
+    translate([length_inner() / 2, width_inner() / 2, height_total() - DISPLAY_HEIGHT - DISPLAY_Z_INSET])
+        ry(- 90) rx(90)
+        linear_extrude(width_inner())
+            hull() {
+                translate([DISPLAY_DEPTH + 1.5 * DISPLAY_ROUNDING_RADIUS, DISPLAY_DEPTH, 0])
+                    circle(r = DISPLAY_ROUNDING_RADIUS);
+                square([DISPLAY_HEIGHT, 0.01]);
+            }
 }
