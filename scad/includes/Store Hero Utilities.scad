@@ -1,20 +1,11 @@
-module tx(value) translate([value, 0, 0]) children();
-module ty(value) translate([0, value, 0]) children();
-module tz(value) translate([0, 0, value]) children();
-module rx(value) rotate([value, 0, 0]) children();
-module ry(value) rotate([0, value, 0]) children();
-module rz(value) rotate([0, 0, value]) children();
-module sx(value) scale([value, 1, 1]) children();
-module sy(value) scale([1, value, 1]) children();
-module sz(value) scale([1, 1, value]) children();
-
 module rounded_square(dimensions, r, center = false) {
     x = dimensions[0];
     y = dimensions[1];
-    minkowski() {
-        square([x - 2 * r, y - 2 * r], center);
-        circle(r = r);
-    }
+    translate([center ? 0 : r, center ? 0 : r, 0])
+        minkowski() {
+            square([x - 2 * r, y - 2 * r], center);
+            circle(r = r);
+        }
 }
 
 module rounded_cube(dimensions, r, center = false) {
@@ -32,4 +23,15 @@ module rounded_cube(dimensions, r, center = false) {
             translate([x - r, y - r, z - r]) sphere(r = r);
             translate([r, y - r, z - r]) sphere(r = r);
         }
+}
+
+module rounded_chamfered_cube(bottom, top, bottom_radius, top_radius, height) {
+    hull() {
+        translate([(top[0] - bottom[0]) / 2, (top[1] - bottom[1]) / 2, 0])
+            linear_extrude(0.01)
+                rounded_square(bottom, bottom_radius);
+        translate([0, 0, height - 0.01])
+            linear_extrude(0.01)
+                rounded_square(top, top_radius);
+    }
 }
