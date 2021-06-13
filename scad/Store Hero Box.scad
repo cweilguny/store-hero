@@ -44,8 +44,6 @@ include <includes/Store Hero Calculations.scad>
 // ### MAIN RENDERING
 ////////////////////////////////////////////////////////////////////////////////
 main();
-//display_body();
-//display_edge_cutouts();
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,15 +67,14 @@ module display() {
 }
 
 module display_body() {
-    color("Blue")
-        rotate([0, - 90, 0])
-            rotate([90, 0, 0])
-                linear_extrude(width_inner())
-                    hull() {
-                        translate([DISPLAY_DEPTH + 1.5 * DISPLAY_ROUNDING_RADIUS, DISPLAY_DEPTH, 0])
-                            circle(r = DISPLAY_ROUNDING_RADIUS);
-                        square([DISPLAY_HEIGHT, 0.01]);
-                    }
+    rotate([0, - 90, 0])
+        rotate([90, 0, 0])
+            linear_extrude(width_inner())
+                hull() {
+                    translate([DISPLAY_DEPTH + 1.5 * DISPLAY_ROUNDING_RADIUS, DISPLAY_DEPTH, 0])
+                        circle(r = DISPLAY_ROUNDING_RADIUS);
+                    square([DISPLAY_HEIGHT, 0.01]);
+                }
 }
 
 module display_edge_cutouts() {
