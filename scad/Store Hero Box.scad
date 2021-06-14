@@ -53,7 +53,7 @@ module main() {
     union() {
         raw_box();
         if (ADD_DISPLAY) {
-            display();
+            display($fn = 50);
         }
     }
 }
