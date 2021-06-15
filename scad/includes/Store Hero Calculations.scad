@@ -8,3 +8,5 @@ function length_foot() = BASE_SIZE - 2 * FOOT_TO_WALL_SIZE;
 function width_foot() = BASE_SIZE - 2 * FOOT_TO_WALL_SIZE;
 
 function wall_z() = FOOT_HEIGHT + FOOT_TO_WALL_SIZE;
+
+function display_width() = width_inner() - 2 * DISPLAY_SPACING;
