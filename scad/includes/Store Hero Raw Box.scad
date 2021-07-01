@@ -30,10 +30,10 @@ module raw_box() {
         hull() {
             translate([FOOT_TO_WALL_SIZE + FOOT_CHAMFER_SIZE, FOOT_TO_WALL_SIZE + FOOT_CHAMFER_SIZE, 0])
                 linear_extrude(FOOT_CHAMFER_SIZE)
-                    rounded_square([length_foot() - 2 * FOOT_CHAMFER_SIZE, width_foot() - 2 * FOOT_CHAMFER_SIZE], FOOT_CORNER_ROUNDING_RADIUS);
+                    square([length_foot() - 2 * FOOT_CHAMFER_SIZE, width_foot() - 2 * FOOT_CHAMFER_SIZE]);
             translate([FOOT_TO_WALL_SIZE, FOOT_TO_WALL_SIZE, FOOT_CHAMFER_SIZE])
                 linear_extrude(FOOT_HEIGHT - FOOT_CHAMFER_SIZE)
-                    rounded_square([length_foot(), width_foot()], FOOT_CORNER_ROUNDING_RADIUS);
+                    square([length_foot(), width_foot()]);
         }
     }
 
@@ -41,10 +41,10 @@ module raw_box() {
         hull() {
             translate([FOOT_TO_WALL_SIZE, FOOT_TO_WALL_SIZE, FOOT_HEIGHT])
                 linear_extrude(FOOT_TO_WALL_SIZE)
-                    rounded_square([length_foot(), width_foot()], FOOT_CORNER_ROUNDING_RADIUS);
+                    square([length_foot(), width_foot()]);
             translate([0, 0, FOOT_HEIGHT + FOOT_TO_WALL_SIZE])
                 linear_extrude(FLOOR_THICKNESS)
-                    rounded_square([BASE_SIZE, BASE_SIZE], WALL_CORNER_ROUNDING_RADIUS);
+                    rounded_square([BASE_SIZE, BASE_SIZE], WALL_CORNER_ROUNDING_RADIUS_OUTER);
         }
     }
 
@@ -63,7 +63,7 @@ module raw_box() {
         xy_offset = FOOT_TO_WALL_SIZE + WALL_THICKNESS;
         translate([xy_offset, xy_offset, FLOOR_THICKNESS]) {
             linear_extrude(FOOT_HEIGHT - FLOOR_THICKNESS)
-                rounded_square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS], FOOT_CORNER_ROUNDING_RADIUS);
+                square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS]);
         }
     }
 
@@ -71,29 +71,29 @@ module raw_box() {
         hull() {
             translate([WALL_THICKNESS, WALL_THICKNESS, FOOT_HEIGHT + FOOT_TO_WALL_SIZE])
                 linear_extrude(FLOOR_THICKNESS)
-                    rounded_square([BASE_SIZE - 2 * WALL_THICKNESS, BASE_SIZE - 2 * WALL_THICKNESS], WALL_CORNER_ROUNDING_RADIUS);
+                    rounded_square([BASE_SIZE - 2 * WALL_THICKNESS, BASE_SIZE - 2 * WALL_THICKNESS], WALL_CORNER_ROUNDING_RADIUS_INNER);
             translate([FOOT_TO_WALL_SIZE + WALL_THICKNESS, FOOT_TO_WALL_SIZE + WALL_THICKNESS, FOOT_HEIGHT])
                 linear_extrude(FOOT_TO_WALL_SIZE)
-                    rounded_square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS], FOOT_CORNER_ROUNDING_RADIUS);
+                    square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS]);
         }
     }
 
     module base_floor() {
         translate([0, 0, FOOT_HEIGHT + FOOT_TO_WALL_SIZE])
             linear_extrude(FLOOR_THICKNESS)
-                rounded_square([length(), width()], WALL_CORNER_ROUNDING_RADIUS, false);
+                rounded_square([length(), width()], WALL_CORNER_ROUNDING_RADIUS_OUTER, false);
     }
 
     module wall() {
         translate([0, 0, wall_z()])
             linear_extrude(height_wall())
-                rounded_square([length(), width()], WALL_CORNER_ROUNDING_RADIUS);
+                rounded_square([length(), width()], WALL_CORNER_ROUNDING_RADIUS_OUTER);
     }
 
     module wall_cutout() {
         translate([WALL_THICKNESS, WALL_THICKNESS, wall_z() + FLOOR_THICKNESS])
             linear_extrude(height_wall())
-                rounded_square([length_inner(), width_inner()], WALL_CORNER_ROUNDING_RADIUS);
+                rounded_square([length_inner(), width_inner()], WALL_CORNER_ROUNDING_RADIUS_INNER);
     }
 }
 
