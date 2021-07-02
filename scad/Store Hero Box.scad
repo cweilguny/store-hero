@@ -6,7 +6,7 @@ LENGTH_UNITS = 1;
 // Width factor: The width will be 49 x WIDTH_UNITS
 WIDTH_UNITS = 1;
 // Height factor: The height will be 33.75 * HEIGHT_UNITS + 3.5
-HEIGHT_UNITS = 2;
+HEIGHT_UNITS = 1;
 // Override HEIGHT_UNITS and give a custom numeric value for the total height; if left blank HEIGHT_UNITS is used
 HEIGHT_TOTAL_OVERRIDE = "";
 // Add a display?
