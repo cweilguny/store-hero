@@ -30,10 +30,10 @@ module raw_box() {
         hull() {
             translate([FOOT_TO_WALL_SIZE + FOOT_CHAMFER_SIZE, FOOT_TO_WALL_SIZE + FOOT_CHAMFER_SIZE, 0])
                 linear_extrude(FOOT_CHAMFER_SIZE)
-                    square([length_foot() - 2 * FOOT_CHAMFER_SIZE, width_foot() - 2 * FOOT_CHAMFER_SIZE]);
+                    rounded_square([length_foot() - 2 * FOOT_CHAMFER_SIZE, width_foot() - 2 * FOOT_CHAMFER_SIZE], FOOT_CORNER_ROUNDING_RADIUS);
             translate([FOOT_TO_WALL_SIZE, FOOT_TO_WALL_SIZE, FOOT_CHAMFER_SIZE])
                 linear_extrude(FOOT_HEIGHT - FOOT_CHAMFER_SIZE)
-                    square([length_foot(), width_foot()]);
+                    rounded_square([length_foot(), width_foot()], FOOT_CORNER_ROUNDING_RADIUS);
         }
     }
 
@@ -41,7 +41,7 @@ module raw_box() {
         hull() {
             translate([FOOT_TO_WALL_SIZE, FOOT_TO_WALL_SIZE, FOOT_HEIGHT])
                 linear_extrude(FOOT_TO_WALL_SIZE)
-                    square([length_foot(), width_foot()]);
+                    rounded_square([length_foot(), width_foot()], FOOT_CORNER_ROUNDING_RADIUS);
             translate([0, 0, FOOT_HEIGHT + FOOT_TO_WALL_SIZE])
                 linear_extrude(FLOOR_THICKNESS)
                     rounded_square([BASE_SIZE, BASE_SIZE], WALL_CORNER_ROUNDING_RADIUS_OUTER);
@@ -63,7 +63,7 @@ module raw_box() {
         xy_offset = FOOT_TO_WALL_SIZE + WALL_THICKNESS;
         translate([xy_offset, xy_offset, FLOOR_THICKNESS]) {
             linear_extrude(FOOT_HEIGHT - FLOOR_THICKNESS)
-                square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS]);
+                rounded_square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS], FOOT_CORNER_ROUNDING_RADIUS);
         }
     }
 
@@ -74,7 +74,7 @@ module raw_box() {
                     rounded_square([BASE_SIZE - 2 * WALL_THICKNESS, BASE_SIZE - 2 * WALL_THICKNESS], WALL_CORNER_ROUNDING_RADIUS_INNER);
             translate([FOOT_TO_WALL_SIZE + WALL_THICKNESS, FOOT_TO_WALL_SIZE + WALL_THICKNESS, FOOT_HEIGHT])
                 linear_extrude(FOOT_TO_WALL_SIZE)
-                    square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS]);
+                    rounded_square([length_foot() - 2 * WALL_THICKNESS, width_foot() - 2 * WALL_THICKNESS], FOOT_CORNER_ROUNDING_RADIUS);
         }
     }
 
