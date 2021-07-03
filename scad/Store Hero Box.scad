@@ -59,7 +59,10 @@ module main() {
 }
 
 module display() {
-    translate([length_inner() + WALL_THICKNESS, width_inner() + WALL_THICKNESS - DISPLAY_SPACING, height_total() - DISPLAY_HEIGHT - DISPLAY_Z_INSET])
+    x_offset = length_inner() + WALL_THICKNESS;
+    y_offset = width_inner() + WALL_THICKNESS - DISPLAY_SPACING;
+    z_offset = height_total() - DISPLAY_HEIGHT - DISPLAY_Z_INSET;
+    translate([x_offset, y_offset, z_offset])
         rotate([0, - 90, 0])
             rotate([90, 0, 0])
                 linear_extrude(display_width())
