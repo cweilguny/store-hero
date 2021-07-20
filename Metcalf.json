@@ -4,7 +4,8 @@
   "sets": {
     "length_units": [1, 2, 3, 4, 5, 6],
     "width_units": [1, 2, 3, 4, 5, 6],
-    "height_units": [1, 2, 3]
+    "height_units": [1, 2, 3],
+    "single_run": [true]
   },
   "tasks": {
     "store-hero-box-no-display": {
@@ -43,6 +44,15 @@
         "scad/Store Hero - Grid.scad"
       ],
       "createDirs": ["stl/Store Hero - Grid"]
+    },
+    "store-hero-ikea-alex-drawer-spacer": {
+      "title": "Store Hero - Ikea Alex Drawer Spacer",
+      "run": ["single_run"],
+      "commandArgs": [
+        "-o", "stl/Store Hero - Accessories/Store Hero - Ikea Alex Drawer Spacer.stl",
+        "scad/Store Hero - Ikea Alex Drawer Spacer.scad"
+      ],
+      "createDirs": ["stl/Store Hero - Accessories"]
     }
   }
 }

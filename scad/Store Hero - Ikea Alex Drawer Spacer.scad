@@ -1,0 +1,49 @@
+////////////////////////////////////////////////////////////////////////////////
+// ### OPENSCAD SPECIAL VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+$fn = 24;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ### GLOBAL VARIABLES
+////////////////////////////////////////////////////////////////////////////////
+include <includes/Store Hero Variables.scad>
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ### UTILITY MODULES
+////////////////////////////////////////////////////////////////////////////////
+include <includes/Store Hero Utilities.scad>
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ### MAIN RENDERING
+////////////////////////////////////////////////////////////////////////////////
+main();
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ### MODULES
+////////////////////////////////////////////////////////////////////////////////
+module main() {
+    difference() {
+        plate();
+        plate_cutouts();
+    }
+}
+
+module plate() {
+    cube([IKEA_ALEX_DRAWER_SPACER_LENGTH, IKEA_ALEX_DRAWER_SPACER_WIDTH, IKEA_ALEX_DRAWER_SPACER_HEIGHT]);
+}
+
+module plate_cutouts() {
+    length = ((IKEA_ALEX_DRAWER_SPACER_LENGTH - IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING) / IKEA_ALEX_DRAWER_SPACER_NR_CUTOUTS)
+        - IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING;
+    width = IKEA_ALEX_DRAWER_SPACER_WIDTH - 2 * IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING;
+    for (i = [0 : IKEA_ALEX_DRAWER_SPACER_NR_CUTOUTS - 1]) {
+        x_offset = IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING + i * (length + IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING);
+        translate([x_offset, IKEA_ALEX_DRAWER_SPACER_CUTOUT_SPACING, 0])
+            linear_extrude(IKEA_ALEX_DRAWER_SPACER_HEIGHT)
+                rounded_square([length, width], IKEA_ALEX_DRAWER_SPACER_CUTOUT_ROUNDING_RADIUS);
+    }
+}
