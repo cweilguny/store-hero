@@ -8,41 +8,41 @@
   },
   "tasks": {
     "store-hero-box-no-display": {
-      "title": "Store Hero Box No Display @length_units@x@width_units@x@height_units@",
+      "title": "Store Hero - Box No Display @length_units@x@width_units@x@height_units@",
       "run": ["length_units", "width_units", "height_units"],
       "commandArgs": [
-        "-o", "stl/Store Hero Box No Display/Store Hero Box No Display @length_units@x@width_units@x@height_units@.stl",
+        "-o", "stl/Store Hero - Box No Display/Store Hero - Box No Display @length_units@x@width_units@x@height_units@.stl",
         "-D", "LENGTH_UNITS=@length_units@",
         "-D", "WIDTH_UNITS=@width_units@",
         "-D", "HEIGHT_UNITS=@height_units@",
         "-D", "ADD_DISPLAY=false",
-        "scad/Store Hero Box.scad"
+        "scad/Store Hero - Box.scad"
       ],
-      "createDirs": ["stl/Store Hero Box No Display/"]
+      "createDirs": ["stl/Store Hero - Box No Display/"]
     },
     "store-hero-box-display": {
-      "title": "Store Hero Box Display @length_units@x@width_units@x@height_units@",
+      "title": "Store Hero - Box Display @length_units@x@width_units@x@height_units@",
       "run": ["length_units", "width_units", "height_units"],
       "commandArgs": [
-        "-o", "stl/Store Hero Box Display/Store Hero Box Display @length_units@x@width_units@x@height_units@.stl",
+        "-o", "stl/Store Hero - Box Display/Store Hero - Box Display @length_units@x@width_units@x@height_units@.stl",
         "-D", "LENGTH_UNITS=@length_units@",
         "-D", "WIDTH_UNITS=@width_units@",
         "-D", "HEIGHT_UNITS=@height_units@",
         "-D", "ADD_DISPLAY=true",
-        "scad/Store Hero Box.scad"
+        "scad/Store Hero - Box.scad"
       ],
-      "createDirs": ["stl/Store Hero Box Display/"]
+      "createDirs": ["stl/Store Hero - Box Display/"]
     },
     "store-hero-grid": {
-      "title": "Store Hero Grid @length_units@x@width_units@",
+      "title": "Store Hero - Grid @length_units@x@width_units@",
       "run": ["length_units", "width_units"],
       "commandArgs": [
-        "-o", "stl/Store Hero Grid/Store Hero Grid @length_units@x@width_units@.stl",
+        "-o", "stl/Store Hero - Grid/Store Hero - Grid @length_units@x@width_units@.stl",
         "-D", "LENGTH_UNITS=@length_units@",
         "-D", "WIDTH_UNITS=@width_units@",
-        "scad/Store Hero Grid.scad"
+        "scad/Store Hero - Grid.scad"
       ],
-      "createDirs": ["stl/Store Hero Grid"]
+      "createDirs": ["stl/Store Hero - Grid"]
     }
   }
 }
