@@ -59,8 +59,8 @@ module grid_cell() {
     difference() {
         cube([BASE_SIZE, BASE_SIZE, GRID_FLOOR_THICKNESS + GRID_WALL_HEIGHT]);
         translate([GRID_WALL_THICKNESS, GRID_WALL_THICKNESS, GRID_FLOOR_THICKNESS])
-            cube([BASE_SIZE - 2 * GRID_WALL_THICKNESS - 2 * BASE_SIZE_REDUCTION, BASE_SIZE - 2 * GRID_WALL_THICKNESS - 2 * BASE_SIZE_REDUCTION, GRID_WALL_HEIGHT]);
-        translate([(BASE_SIZE - GRID_HOLE_SIZE) / 2, (BASE_SIZE - GRID_HOLE_SIZE) / 2, 0])
+            cube([length_grid_cell(), width_grid_cell(), GRID_WALL_HEIGHT]);
+        translate([grid_cell_hole_inset(), grid_cell_hole_inset(), 0])
             rounded_cube([GRID_HOLE_SIZE, GRID_HOLE_SIZE, GRID_FLOOR_THICKNESS], GRID_HOLE_ROUNDING_RADIUS);
     }
 }
