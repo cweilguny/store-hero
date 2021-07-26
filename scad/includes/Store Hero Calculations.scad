@@ -1,3 +1,4 @@
+function base_size_reduced() = BASE_SIZE - 2 * BASE_SIZE_REDUCTION;
 function length() = LENGTH_UNITS * BASE_SIZE;
 function width() = WIDTH_UNITS * BASE_SIZE;
 function length_reduced() = length() - 2 * BASE_SIZE_REDUCTION;
@@ -8,9 +9,9 @@ function length_inner_reduced() = length_reduced() - 2 * WALL_THICKNESS;
 function width_inner_reduced() = width_reduced() - 2 * WALL_THICKNESS;
 function height_total() = (BASE_HEIGHT * HEIGHT_UNITS) - (FOOT_HEIGHT * (HEIGHT_UNITS - 1));
 function height_wall() = height_total() - (FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE);
-function length_foot() = BASE_SIZE - 2 * FOOT_TO_WALL_XY_SIZE - 2 * BASE_SIZE_REDUCTION;
+function length_foot() = base_size_reduced() - 2 * FOOT_TO_WALL_XY_SIZE;
 function width_foot() =  length_foot();
-function length_grid_cell() = BASE_SIZE - 2 * GRID_WALL_THICKNESS - 2 * BASE_SIZE_REDUCTION;
+function length_grid_cell() = base_size_reduced() - 2 * GRID_WALL_THICKNESS;
 function width_grid_cell() = length_grid_cell();
 function grid_cell_hole_inset() = (BASE_SIZE - GRID_HOLE_SIZE) / 2;
 function wall_z() = FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE;
