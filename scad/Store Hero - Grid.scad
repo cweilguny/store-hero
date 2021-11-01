@@ -2,13 +2,13 @@
 // ### CUSTOMIZABLE VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 // Length factor: The length will be 49 x LENGTH_UNITS
-LENGTH_UNITS = 4;
+LENGTH_UNITS = 3;
 // Width factor: The width will be 49 x WIDTH_UNITS
-WIDTH_UNITS = 5;
+WIDTH_UNITS = 3;
 // Spacer side A
-SPACER_A = 40;
+SPACER_A = 0;
 // Spacer side B
-SPACER_B = 8.5;
+SPACER_B = 0;
 // Spacer side C
 SPACER_C = 0;
 // Spacer side D
