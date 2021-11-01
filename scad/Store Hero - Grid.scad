@@ -2,13 +2,13 @@
 // ### CUSTOMIZABLE VARIABLES
 ////////////////////////////////////////////////////////////////////////////////
 // Length factor: The length will be 49 x LENGTH_UNITS
-LENGTH_UNITS = 3;
+LENGTH_UNITS = 4;
 // Width factor: The width will be 49 x WIDTH_UNITS
-WIDTH_UNITS = 3;
+WIDTH_UNITS = 5;
 // Spacer side A
-SPACER_A = 0;
+SPACER_A = 40;
 // Spacer side B
-SPACER_B = 0;
+SPACER_B = 8.5;
 // Spacer side C
 SPACER_C = 0;
 // Spacer side D
@@ -93,14 +93,14 @@ module cutouts_spacers() {
         translate([0, width_grid() - SPACER_A, 0])
             cutouts_spacer(length_grid(), SPACER_A);
     if (SPACER_B >= spacer_min_width())
-        translate([length_grid() - spacer_spacing(), SPACER_B, 0])
+        translate([length_grid() - spacer_spacing(), SPACER_C, 0])
             rotate([0, 0, 90])
                 cutouts_spacer(width(), SPACER_B);
     if (SPACER_C >= spacer_min_width())
         translate([0, spacer_spacing(), 0])
             cutouts_spacer(length_grid(), SPACER_C);
     if (SPACER_D >= spacer_min_width())
-        translate([SPACER_D, SPACER_B, 0])
+        translate([SPACER_D, SPACER_C, 0])
             rotate([0, 0, 90])
                 cutouts_spacer(width(), SPACER_D);
 }
