@@ -11,9 +11,11 @@ function height_total() = (BASE_HEIGHT * HEIGHT_UNITS) - (FOOT_HEIGHT * (HEIGHT_
 function height_wall() = height_total() - (FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE);
 function length_foot() = base_size_reduced() - 2 * FOOT_TO_WALL_XY_SIZE;
 function width_foot() =  length_foot();
-function length_grid_cell() = base_size_reduced() - 2 * GRID_WALL_THICKNESS;
-function width_grid_cell() = length_grid_cell();
+function length_grid_cell() = length_foot() + 2 * GRID_WALL_TOLERANCE;
+function width_grid_cell() = width_foot() + 2 * GRID_WALL_TOLERANCE;
 function grid_cell_hole_inset() = (BASE_SIZE - GRID_HOLE_SIZE) / 2;
 function wall_z() = FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE;
-
+function grid_wall_thickness() = (BASE_SIZE - length_grid_cell()) / 2;
+function spacer_spacing() = grid_wall_thickness();
+function spacer_min_width() = 2 * spacer_spacing() + SPACER_CUTOUT_MIN_WIDTH;
 function display_width() = width_inner() - 2 * DISPLAY_SPACING;
