@@ -5,6 +5,14 @@
 LENGTH_UNITS = 3;
 // Width factor: The width will be 49 x WIDTH_UNITS
 WIDTH_UNITS = 3;
+// Spacer side A
+SPACER_A = 0;
+// Spacer side B
+SPACER_B = 0;
+// Spacer side C
+SPACER_C = 0;
+// Spacer side D
+SPACER_D = 0;
 
 module __Customizer_Limit__() {}
 
@@ -32,6 +40,9 @@ include <includes/Store Hero Utilities.scad>
 ////////////////////////////////////////////////////////////////////////////////
 include <includes/Store Hero Calculations.scad>
 
+function length() = BASE_SIZE * LENGTH_UNITS + SPACER_B + SPACER_D;
+function width() = BASE_SIZE * WIDTH_UNITS + SPACER_A + SPACER_C;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // ### MAIN RENDERING
@@ -43,24 +54,30 @@ main();
 // ### MODULES
 ////////////////////////////////////////////////////////////////////////////////
 module main() {
-    grid();
+    difference() {
+        base_plate();
+        cutouts();
+    }
 }
 
-module grid() {
-    for (i = [0 : LENGTH_UNITS - 1]) {
-        for (j = [0 : WIDTH_UNITS - 1]) {
-            translate([i * BASE_SIZE, j * BASE_SIZE, 0])
-                grid_cell();
+module base_plate() {
+    cube([length(), width(), GRID_FLOOR_THICKNESS + GRID_WALL_HEIGHT]);
+}
+
+module cutouts() {
+    translate([SPACER_D, SPACER_C, 0]) {
+        for (i = [0 : LENGTH_UNITS - 1]) {
+            for (j = [0 : WIDTH_UNITS - 1]) {
+                translate([i * BASE_SIZE, j * BASE_SIZE, 0])
+                    cell_cutout();
+            }
         }
     }
 }
 
-module grid_cell() {
-    difference() {
-        cube([BASE_SIZE, BASE_SIZE, GRID_FLOOR_THICKNESS + GRID_WALL_HEIGHT]);
-        translate([GRID_WALL_THICKNESS, GRID_WALL_THICKNESS, GRID_FLOOR_THICKNESS])
-            cube([length_grid_cell(), width_grid_cell(), GRID_WALL_HEIGHT]);
-        translate([grid_cell_hole_inset(), grid_cell_hole_inset(), 0])
-            rounded_cube([GRID_HOLE_SIZE, GRID_HOLE_SIZE, GRID_FLOOR_THICKNESS], GRID_HOLE_ROUNDING_RADIUS);
-    }
+module cell_cutout() {
+    translate([GRID_WALL_THICKNESS, GRID_WALL_THICKNESS, GRID_FLOOR_THICKNESS])
+        cube([length_grid_cell(), width_grid_cell(), GRID_WALL_HEIGHT + RENDER_HELPER]);
+    translate([grid_cell_hole_inset(), grid_cell_hole_inset(), 0])
+        rounded_cube([GRID_HOLE_SIZE, GRID_HOLE_SIZE, GRID_FLOOR_THICKNESS], GRID_HOLE_ROUNDING_RADIUS);
 }
