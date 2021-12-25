@@ -18,4 +18,4 @@ function wall_z() = FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE;
 function grid_wall_thickness() = (BASE_SIZE - length_grid_cell()) / 2;
 function spacer_spacing() = grid_wall_thickness();
 function spacer_min_width() = 2 * spacer_spacing() + SPACER_CUTOUT_MIN_WIDTH;
-function display_width() = width_inner() - 2 * DISPLAY_SPACING;
+function display_width() = length_inner() - 2 * DISPLAY_SPACING;
