@@ -63,11 +63,11 @@ module display() {
     y_offset = WALL_THICKNESS;
     z_offset = height_total() - DISPLAY_HEIGHT - DISPLAY_Z_INSET;
     translate([x_offset, y_offset, z_offset])
-            rotate([90, -90, -90])
-                linear_extrude(display_width())
-                    hull() {
-                        translate([DISPLAY_DEPTH + 1.5 * DISPLAY_ROUNDING_RADIUS, DISPLAY_DEPTH, 0])
-                            circle(r = DISPLAY_ROUNDING_RADIUS);
-                        square([DISPLAY_HEIGHT, 0.01]);
-                    }
+        rotate([90, -90, -90])
+            linear_extrude(display_width())
+                hull() {
+                    translate([DISPLAY_DEPTH + 1.5 * DISPLAY_ROUNDING_RADIUS, DISPLAY_DEPTH, 0])
+                        circle(r = DISPLAY_ROUNDING_RADIUS);
+                    square([DISPLAY_HEIGHT, 0.01]);
+                }
 }
