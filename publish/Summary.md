@@ -2,6 +2,7 @@
 
 **Store Hero is a stackable box in various widths and lengths that are multiples of 49 mm. So the boxes are compatible to the "Tanos Systainer Insetbox" system.**
 
+This design is heavily inspired by https://www.thingiverse.com/thing:4812321 and Alexandre Chappel's Boxes (https://www.thingiverse.com/chappel/designs). I wanted them to be compatible to Tanos Systainer Insetboxes, and be able to customize arbitrary grid sizes, so I designed a box myself using OpenSCAD.
 
 ### Components and Variations
 
