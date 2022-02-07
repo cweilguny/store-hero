@@ -16,7 +16,7 @@ module raw_box() {
     module feet() {
         for (i = [0 : LENGTH_UNITS - 1]) {
             for (j = [0 : WIDTH_UNITS - 1]) {
-                translate([i * BASE_SIZE, j * BASE_SIZE, 0]) {
+                translate([i * BASE_SIZE_LENGTH, j * BASE_SIZE_WIDTH, 0]) {
                     union() {
                         foot();
                         foot_to_wall();
@@ -46,14 +46,14 @@ module raw_box() {
                     rounded_square([length_foot(), width_foot()], FOOT_CORNER_ROUNDING_RADIUS);
             translate([BASE_SIZE_REDUCTION, BASE_SIZE_REDUCTION, FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE])
                 linear_extrude(FLOOR_THICKNESS)
-                    rounded_square([base_size_reduced(), base_size_reduced()], WALL_CORNER_ROUNDING_RADIUS_OUTER);
+                    rounded_square([base_size_length_reduced(), base_size_width_reduced()], WALL_CORNER_ROUNDING_RADIUS_OUTER);
         }
     }
 
     module feet_cutout() {
         for (i = [0 : LENGTH_UNITS - 1]) {
             for (j = [0 : WIDTH_UNITS - 1]) {
-                translate([i * BASE_SIZE, j * BASE_SIZE, 0]) {
+                translate([i * BASE_SIZE_LENGTH, j * BASE_SIZE_WIDTH, 0]) {
                     foot_cutout();
                     foot_to_wall_cutout();
                 }
@@ -75,7 +75,7 @@ module raw_box() {
         hull() {
             translate([base_inset_top, base_inset_top, FOOT_HEIGHT + FOOT_TO_WALL_Z_SIZE])
                 linear_extrude(FLOOR_THICKNESS + RENDER_HELPER)
-                    rounded_square([base_size_reduced() - 2 * WALL_THICKNESS, base_size_reduced() - 2 * WALL_THICKNESS], WALL_CORNER_ROUNDING_RADIUS_INNER);
+                    rounded_square([base_size_length_reduced() - 2 * WALL_THICKNESS, base_size_width_reduced() - 2 * WALL_THICKNESS], WALL_CORNER_ROUNDING_RADIUS_INNER);
             translate([base_inset_bottom + FOOT_TO_WALL_XY_SIZE, base_inset_bottom + FOOT_TO_WALL_XY_SIZE, FOOT_HEIGHT])
                 linear_extrude(FOOT_TO_WALL_Z_SIZE)
                     rounded_square([length_foot() - 3 * WALL_THICKNESS, width_foot() - 3 * WALL_THICKNESS], FOOT_CORNER_ROUNDING_RADIUS);

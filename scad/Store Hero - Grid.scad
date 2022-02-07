@@ -40,8 +40,8 @@ include <includes/Store Hero Utilities.scad>
 ////////////////////////////////////////////////////////////////////////////////
 include <includes/Store Hero Calculations.scad>
 
-function length_grid() = BASE_SIZE * LENGTH_UNITS + SPACER_B + SPACER_D;
-function width_grid() = BASE_SIZE * WIDTH_UNITS + SPACER_A + SPACER_C;
+function length_grid() = BASE_SIZE_LENGTH * LENGTH_UNITS + SPACER_B + SPACER_D;
+function width_grid() = BASE_SIZE_WIDTH * WIDTH_UNITS + SPACER_A + SPACER_C;
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +74,7 @@ module cutouts_cells() {
     translate([SPACER_D, SPACER_C, 0]) {
         for (i = [0 : LENGTH_UNITS - 1]) {
             for (j = [0 : WIDTH_UNITS - 1]) {
-                translate([i * BASE_SIZE, j * BASE_SIZE, 0])
+                translate([i * BASE_SIZE_LENGTH, j * BASE_SIZE_WIDTH, 0])
                     cutouts_cell();
             }
         }
@@ -82,10 +82,10 @@ module cutouts_cells() {
 }
 
 module cutouts_cell() {
-    translate([(BASE_SIZE - length_grid_cell()) / 2, (BASE_SIZE - width_grid_cell()) / 2, GRID_FLOOR_THICKNESS])
+    translate([(BASE_SIZE_LENGTH - length_grid_cell()) / 2, (BASE_SIZE_WIDTH - width_grid_cell()) / 2, GRID_FLOOR_THICKNESS])
         cube([length_grid_cell(), width_grid_cell(), GRID_WALL_HEIGHT + RENDER_HELPER]);
-    translate([grid_cell_hole_inset(), grid_cell_hole_inset(), 0])
-        rounded_cube([GRID_HOLE_SIZE, GRID_HOLE_SIZE, GRID_FLOOR_THICKNESS], GRID_HOLE_ROUNDING_RADIUS);
+    translate([grid_cell_hole_inset_length(), grid_cell_hole_inset_width(), 0])
+        rounded_cube([BASE_SIZE_LENGTH - GRID_HOLE_SIZE_SPACING, BASE_SIZE_WIDTH - GRID_HOLE_SIZE_SPACING, GRID_FLOOR_THICKNESS], GRID_HOLE_ROUNDING_RADIUS);
 }
 
 module cutouts_spacers() {
