@@ -4,6 +4,11 @@
 
 This design is heavily inspired by https://www.thingiverse.com/thing:4812321 and Alexandre Chappel's Boxes (https://www.thingiverse.com/chappel/designs). I wanted them to be compatible to Tanos Systainer Insetboxes, and be able to customize arbitrary grid sizes, so I designed a box myself using OpenSCAD.
 
+## Download all STLs in one ZIP
+
+The Thingiverse upload function crashes, when I add an upload to this thing. There are probably to many files in this thing already. So I created a release on GitHub, that has a download including all STLs: https://github.com/cweilguny/store-hero/releases/tag/1.0.0
+
+
 ### Components and Variations
 
 Store Hero consists of boxes and a grid in arbitrary sizes limited only by your printer's maximum build size.
